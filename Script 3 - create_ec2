@@ -32,4 +32,26 @@ aws ec2 run-instances \
 --image-id "$debian_ami" \
 --security-group-ids "$security_group_id" \
 --key-name bcitkey \
---subnet-id "$subnet_id" 
+--subnet-id "$subnet_id" \
+
+instance_id=$(aws ec2 run-instances \
+  --image-id "$debian_ami" \
+  --instance-type t2.micro \
+  --key-name "$key_name" \
+  --security-group-ids "$security_group_id" \
+  --subnet-id "$subnet_id" \
+  --associate-public-ip-address \
+  --region "$region" \
+  --query "Instances[0].InstanceId" \
+  --output text)
+
+# Get the public IP address of the EC2 instance
+# COMPLETE THIS PART
+public_ip=$(aws ec2 describe-instances \
+  --instance-ids "$instance_id" \
+  --query 'Reservations[].Instances[].PublicIpAddress' \
+
+# Write instance data to a file
+# COMPLETE THIS PART
+
+echo "Public IP: $public_ip"
