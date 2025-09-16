@@ -1,0 +1,4 @@
+Script 1
+#!/bin/bash
+
+aws ec2 import-key-pair --key-name “bcitkey” --region "us-west-2" --public-key-material fileb://home/Ryan/.ssh/bcitkey.pub
