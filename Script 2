@@ -1,0 +1,23 @@
+Script 2:
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [ "$#" -ne 0 ]; then
+    echo "Usage: $0"
+    exit 1
+fi
+
+bucket_name="4640-ACIT-S3_BUCKET_KESH"
+
+# Check if the bucket exists
+if aws s3api head-bucket --bucket "$bucket_name" 2>/dev/null; then
+    echo "Bucket $bucket_name already exists."
+else
+    echo "Bucket $bucket_name does not exist. Creating..."
+    aws s3api create-bucket \
+      --bucket "$bucket_name" \
+      --region us-west-2 \
+      --create-bucket-configuration LocationConstraint=us-west-2
+    echo "Bucket $bucket_name created successfully."
+fi
