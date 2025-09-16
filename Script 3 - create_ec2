@@ -30,6 +30,6 @@ aws ec2 authorize-security-group-ingress --group-id $security_group_id \
 # COMPLETE THIS PART
 aws ec2 run-instances \
 --image-id "$debian_ami" \
---security-group-ids "$security_group_id"
---key-name bcitkey
---subnet-id "$subnet_id"
+--security-group-ids "$security_group_id" \
+--key-name bcitkey \
+--subnet-id "$subnet_id" 
