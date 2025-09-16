@@ -1,6 +1,6 @@
 # lab-week3-aws-cli
-Kesh Thalagala
-Alfred Chan
+Kesh Thalagala,
+Alfred Chan,
 Leeanne Li
 
 ## Documentation
